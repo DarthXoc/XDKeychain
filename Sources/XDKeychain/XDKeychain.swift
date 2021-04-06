@@ -28,6 +28,11 @@ public class Keychain
         
         /// The username
         var username: String
+        
+        init(username: String, token: String) {
+            self.token = token
+            self.username = username
+        }
     }
     
     // MARK: - Variables
@@ -88,8 +93,8 @@ public class Keychain
         
         // Check to see if the fetch completed successfully
         if (status == errSecSuccess) {
-            return Credential(token: String(data: result?.value(forKey: kSecValueData as String) as? Data ?? Data(), encoding: .utf8) ?? "",
-                              username: result?.value(forKey: kSecAttrAccount as String) as? String ?? "")
+            return Credential(username: result?.value(forKey: kSecAttrAccount as String) as? String ?? "",
+                              token: String(data: result?.value(forKey: kSecValueData as String) as? Data ?? Data(), encoding: .utf8) ?? "")
         } else {
             return nil
         }
