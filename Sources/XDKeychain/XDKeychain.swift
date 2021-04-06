@@ -1,6 +1,6 @@
 import Foundation
 
-public class Keychain
+public class Keychain: NSObject
 {
     // MARK: - Enumerations
     
