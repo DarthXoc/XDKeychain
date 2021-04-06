@@ -1,6 +1,6 @@
 import Foundation
 
-public class Keychain: NSObject
+public class Keychain
 {
     // MARK: - Enumerations
     
@@ -29,7 +29,7 @@ public class Keychain: NSObject
         /// The username
         var username: String
         
-        init(username: String, token: String) {
+        public init(username: String, token: String) {
             self.token = token
             self.username = username
         }
