@@ -13,18 +13,20 @@ Simply add XDKeychain via Swift Package Manager to your project... that's it!
 
 ### Add data to System Keychain
 ```
-Keychain.add(credential: Keychain.Credential(token: "TOKEN_OR_PASSWORD",
+Keychain.add(credential: Credential(token: "TOKEN_OR_PASSWORD",
     username: "USERNAME"))
 ```
 
 ### Add data to iCloud Keychain
 ```
-Keychain.updateICloudKeychain(stringPassword: "TOKEN_OR_PASSWORD",
-    stringUsername: "USERNAME");
+Keychain.updateICloudKeychain(username: "USERNAME",
+    password: "TOKEN_OR_PASSWORD",
+    publicFqdn: "https://WWW.YOURWEBSITE.COM");
 ```
 ```
-Keychain.updateICloudKeychain(stringPassword: Keychain.fetchCredential(credentialPart: .Token)!,
-    stringUsername: Keychain.fetchCredential(credentialPart: .Username)!
+Keychain.updateICloudKeychain(username: Keychain.fetchCredential(credentialPart: .username)!,
+    password: .fetchCredential(credentialPart: .token)!,
+    publicFqdn: "https://WWW.YOURWEBSITE.COM");
 ```
 
 ### Delete data in System Keychain
@@ -34,22 +36,22 @@ Keychain.delete()
 
 ### Fetch token/password from System Keychain
 ```
-Keychain.fetchCredential(credentialPart: .Token)
+Keychain.fetchCredential(credentialPart: .token)
 ```
 
 ### Fetch username from System Keychain
 ```
-Keychain.fetchCredential(credentialPart: .Username)
+Keychain.fetchCredential(credentialPart: .username)
 ```
 
 ### Update token/password in System Keychain
 ```
-Keychain.add(credential: Keychain.Credential(token: "TOKEN_OR_PASSWORD",
-    username: Keychain.fetchCredential(credentialPart: .Username)!))
+Keychain.add(credential: Credential(token: "TOKEN_OR_PASSWORD",
+    username: Keychain.fetchCredential(credentialPart: .username)!))
 ```
 
 ### Update username in System Keychain
 ```
-Keychain.add(credential: Keychain.Credential(token: Keychain.fetchCredential(credentialPart: .Token)!,
+Keychain.add(credential: Credential(token: Keychain.fetchCredential(credentialPart: .token)!,
     username: "USERNAME"))
 ```
