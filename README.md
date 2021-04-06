@@ -13,8 +13,8 @@ Simply add XDKeychain via Swift Package Manager to your project... that's it!
 
 ### Add data to System Keychain
 ```
-Keychain.add(credential: Credential(token: "TOKEN_OR_PASSWORD",
-    username: "USERNAME"))
+Keychain.add(credential: Keychain.Credential(username: "USERNAME",
+    token: "TOKEN_OR_PASSWORD"))
 ```
 
 ### Add data to iCloud Keychain
@@ -46,12 +46,12 @@ Keychain.fetchCredential(credentialPart: .username)
 
 ### Update token/password in System Keychain
 ```
-Keychain.add(credential: Credential(token: "TOKEN_OR_PASSWORD",
-    username: Keychain.fetchCredential(credentialPart: .username)!))
+Keychain.add(credential: Keychain.Credential(username: Keychain.fetchCredential(credentialPart: .username)!,
+    token: "TOKEN_OR_PASSWORD"))
 ```
 
 ### Update username in System Keychain
 ```
-Keychain.add(credential: Credential(token: Keychain.fetchCredential(credentialPart: .token)!,
-    username: "USERNAME"))
+Keychain.add(credential: Keychain.Credential(username: "USERNAME",
+    token: Keychain.fetchCredential(credentialPart: .token)!))
 ```
