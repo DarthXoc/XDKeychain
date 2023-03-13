@@ -133,7 +133,7 @@ public class Keychain
         return [:]
     }
     
-    @available(watchOS, unavailable)
+#if os(iOS)
     /// Updates the credentials stored in iCloud Keychain (separate from the System Keychain). The public FQDN of your your application should be the same as what you entered in your Entitlements file.
     public static func updateICloudKeychain(username stringUsername: String, password stringPassword: String?, publicFqdn stringICloudKeychainFqdn: String)
     {
@@ -145,4 +145,5 @@ public class Keychain
                                   // The password was either saved to iCloud Keychain or it wasn't. If it failed, there's no reason to bother the user with it as there's nothing we can do and we don't want to send the app into a save-failure loop
         })
     }
+#endif
 }
