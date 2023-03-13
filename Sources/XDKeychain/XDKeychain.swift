@@ -115,7 +115,7 @@ public class Keychain
         return nil
     }
     
-    /// Queries the system keychain to retreive the credentials
+    /// Queries the system keychain to retrieve the credentials
     private static func query(queryType: QueryType) -> [CFString: Any]
     {
         // Check to see which type of query is being requested
@@ -133,7 +133,8 @@ public class Keychain
         return [:]
     }
     
-    /// Updates the credentials stored in iCloud Keychain (seperate from the System Keychain). The public FQDN of your your application should be the same as what you entered in your Entitlements file.
+    @available(watchOS, unavailable)
+    /// Updates the credentials stored in iCloud Keychain (separate from the System Keychain). The public FQDN of your your application should be the same as what you entered in your Entitlements file.
     public static func updateICloudKeychain(username stringUsername: String, password stringPassword: String?, publicFqdn stringICloudKeychainFqdn: String)
     {
         // Attempt to insert, update or delete the credential
